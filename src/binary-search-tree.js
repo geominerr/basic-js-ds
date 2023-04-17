@@ -8,16 +8,15 @@ const { Node } = require('../extensions/list-tree.js');
 */
 class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this.rootTree = null;
   }
 
   root() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return this.rootTree
   }
 
   add(data) {
-    this.root = addData(this.root, data);
+    this.rootTree = addData(this.rootTree, data);
 
     function addData(node, data) {
       if (!node) {
