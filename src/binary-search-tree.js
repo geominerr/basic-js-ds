@@ -58,9 +58,24 @@ class BinarySearchTree {
     }
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  find(data) {
+    return getNode(this.rootTree, data);
+
+    function getNode(node, data) {
+      if (!node) {
+        return null;
+      }
+
+      if (node.data === data) {
+        return node;
+      }
+
+      if (data < node.data) {
+        return getNode(node.left, data);
+      } else {
+        return getNode(node.right, data);
+      }
+    }
   }
 
   remove(/* data */) {
@@ -95,3 +110,4 @@ bst.add(14);
 
 
 console.log(bst.rootTree);
+console.log(bst.find(26))
