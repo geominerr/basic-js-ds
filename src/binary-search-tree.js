@@ -127,8 +127,17 @@ class BinarySearchTree {
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (!this.rootTree) {
+      return null;
+    }
+
+    let node = this.rootTree;
+
+    while (node.left) {
+      node = node.left;
+    }
+
+    return node.data;
   }
 
   max() {
@@ -150,8 +159,10 @@ bst.add(33);
 bst.add(22);
 bst.add(13);
 bst.add(14);
+bst.add(7);
 
 
 console.log(bst.find(26));
 bst.remove(26);
 console.log(bst.root())
+console.log(bst.min())
