@@ -12,7 +12,7 @@ class BinarySearchTree {
   }
 
   root() {
-    return this.rootTree
+    return this.rootTree;
   }
 
   add(data) {
@@ -20,7 +20,7 @@ class BinarySearchTree {
 
     function addData(node, data) {
       if (!node) {
-        return new Node(data)
+        return new Node(data);
       }
 
       if (node.data === data) {
@@ -30,16 +30,32 @@ class BinarySearchTree {
       if (data < node.data) {
         node.left = addData(node.left, data);
       } else {
-        node.left = addData(node.left, data);
+        node.right = addData(node.right, data);
       }
 
       return node;
     }
+
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has(data) {
+    return isHas(this.rootTree, data);
+
+    function isHas(node, data) {
+      if (!node) {
+        return false;
+      }
+
+      if (node.data === data) {
+        return true;
+      }
+
+      if (data < node.data) {
+        return isHas(node.left, data);
+      } else {
+        return isHas(node.right, data);
+      }
+    }
   }
 
   find(/* data */) {
@@ -66,3 +82,16 @@ class BinarySearchTree {
 module.exports = {
   BinarySearchTree
 };
+
+const bst = new BinarySearchTree();
+
+bst.add(19);
+bst.add(26);
+bst.add(15);
+bst.add(33);
+bst.add(22);
+bst.add(13);
+bst.add(14);
+
+
+console.log(bst.rootTree);
