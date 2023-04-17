@@ -22,16 +22,20 @@ class Queue {
 
   getUnderlyingList() {
     let current = this.head;
-    let next = this.head.next;
+    let index = this.length;
     const list = {};
-    list.value = current;
-    list.next = next;
-    this.length -= 1;
 
-    while (this.length > 0) {
-      current = current.next;
-      list.next = current;
-      this.length -= 1;
+    while (index) {
+      if (index === this.length) {
+        list.value = current.value;
+        list.next = current.next;
+      } else {
+        current = current.next;
+        list.next = current;
+        current = list;
+      }
+
+      index -= 1;
     }
 
     return list;
